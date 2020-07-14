@@ -1,0 +1,12 @@
+{
+  "name": "resto",
+  "displayName": "resto",
+  "expo": {
+    "name": "resto",
+    "slug": "resto",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
