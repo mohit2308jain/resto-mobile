@@ -8,7 +8,7 @@ import { COMMENTS } from '../shared/comments';
 const RenderComments = (props) => {
     const comments = props.comments;
 
-    const renderCommentItem = ({ item, index }) => {
+    const renderCommentItem = (item, index) => {
         return(
             <View key={index} style={{margin: 10}}>
                 <Text style={{fontSize: 14}}>{item.comment}</Text>
@@ -20,9 +20,9 @@ const RenderComments = (props) => {
 
     return(
         <Card title='Comments'>
-            <FlatList data={comments}
-                renderItem={renderCommentItem}
-                keyExtractor={(item) => item.id.toString()} />
+            {comments.map((item, index) => (
+                renderCommentItem(item, index)
+            ))}
         </Card>
     )
 }

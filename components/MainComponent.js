@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Platform, StatusBar, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { NavigationContainer, DrawerActions } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
 
