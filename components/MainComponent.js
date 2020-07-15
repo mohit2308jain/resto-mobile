@@ -4,12 +4,30 @@ import { Icon } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
+import { connect } from 'react-redux';
 
+import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 import Menu from "./MenuComponent";
 import DishDetail from './DishDetailComponent';
 import HomeComponent from './HomeComponent';
 import ContactComponent from './ContactComponent';
 import AboutComponent from './AboutComponent';
+
+const mapStateToProps = (state) => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leaders: state.leaders
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchDishes: () => dispatch(fetchDishes()),
+  fetchComments: () => dispatch(fetchComments()),
+  fetchPromos: () => dispatch(fetchPromos()),
+  fetchLeaders: () => dispatch(fetchLeaders()),
+})
 
 const HeaderOptions = {
   headerStyle: {
@@ -154,6 +172,13 @@ const MainNavigatorDrawer = () => {
 
 class Main extends React.Component {
 
+  componentDidMount() {
+    this.props.fetchDishes();
+    this.props.fetchComments();
+    this.props.fetchPromos();
+    this.props.fetchLeaders();
+  }
+
   render() {
     return(
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0: StatusBar.currentHeight }}>
@@ -189,4 +214,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
